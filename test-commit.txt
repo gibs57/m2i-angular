@@ -221,3 +221,8 @@ LazyLoading (QUe pour des modules, pas pour des webcomponent),
 Import composant au moment de la creéation de la route
 
 <router-outlet></router-outlet> => C'est la qu'on met le composant crée par le routeur.
+
+On peut demander à préloader les modules en tache de font après que tous les modules home ont été loadé
+https://angular.io/guide/router#preloading-background-loading-of-feature-areas
+
+
