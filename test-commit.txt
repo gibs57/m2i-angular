@@ -226,3 +226,5 @@ On peut demander à préloader les modules en tache de font après que tous les mod
 https://angular.io/guide/router#preloading-background-loading-of-feature-areas
 
 
+On peut simuler une api et un serveur grace à JSON Server:
+https://github.com/typicode/json-server#getting-started

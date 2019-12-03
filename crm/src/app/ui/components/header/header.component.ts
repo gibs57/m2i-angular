@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  //public permet de sortir la variable du Typescript pour le mettre dans le HTML
+  // public permet de sortir la variable du Typescript pour le mettre dans le HTML
   public title: string;
   constructor() {
   }
 
   ngOnInit() {
-    this.title = 'Titre\s app';
+    this.title = 'Cyril Angular application\s app';
   }
 
 }
