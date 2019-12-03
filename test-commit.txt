@@ -1,0 +1,180 @@
+ng --version => install angular
+ng new my app => créer nouvelle application
+code . => L'ouvre directement dans visual code
+
+tslint pour tester les erreurs javascript
+tsconfig => comment doit etre compilé l'application
+package => c'est npm qui gère les dépendances qui a été installé au moment où on a installé nodejs
+package-lock => Genre de backups des packages
+.gitignore => enleve par efault les nodes_modules
+
+karama.conf.js => executer des tests unitaires (Ils seront dans le répertoire e2e)
+
+protactor.conf.js => LAncer les Test end to end via Jasmine. Les fichiers dievent obligatoirement  *.e2e-spec-ts
+
+
+Angular.json => COntient la config de toutes les applications angulars dans ce workspace
+
+ng build => Angular compile
+
+SASS =c'est le plus à la mode
+SCSS => plus proche du CSS
+ANgular-CLI c'est le compilateur (ng build --prod va remplacer le fichier environnement.ts)
+
+Un moins un moduele importé et un composant déclaré => Plus petite application Angular possible
+
+initial-scale=1 => Garde un ration 1 pour 1. content="width=device-width" =>  condidère que la largeur de ton device = la largeur de ton wiew-port.
+(View-port (capacité d'affichage) pour un écranr retina de largeur de 350 px, son view port sera du couble de 700)
+
+
+L'élément host du component:
+<app-root></app-root>
+
+ng serve => compile et lance ton appli dans un localhost
+
+sur tous les élements host, Angular ajoute un attribut _nghost pour comprendre que c'est une balise 
+host et qu'il doit compiler des composants Angular
+
+Sur tous les élements du templates il ajoute un attribut _ngcontent-ied-c0
+.toolbar, cible tous les élements du DOM racine (elm 0)
+
+Agilité
+Delais est fixe
+Cout est fixe
+L'expression du Besoin est variable
+
+Principe 80/20 => Uniquement 20% des pages sont pertinentes
+On dégage les 20 et on valide la trame principale de l'appli (Le gabarit)
+
+Guide de style, une page avec tous les composants comme le fait Boostrap
+
+
+Install CSS boostrap (sans jquery) avec ng boostrap => ng add @ng-bootstrap/schematics
+
+https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4
+ng add @ng-bootstrap/schematics install la version 2 de @ng-bootstrap/ng-bootstrap
+On modifie package.json, la ligne   "@ng-bootstrap/ng-bootstrap": "^2.0.0 alpha" => "@ng-bootstrap/ng-bootstrap": "4.0.0 alpha"
+et on lance la commande npm install @ng-bootstrap/ng-bootstrap
+
+Installation de foot Awesome
+
+
+
+ng g library graphik
+click droit schematic buttons lib => @shematics/angular => Module => Buttons (Angular docs nous permet de générer le module)
+
+SUr le module
+click droit schamtics => @shematics/angular => puis create component
+
+Ensuite pour compiler:
+
+ng build graphik
+
+Cela crée le répertoire dist avec le composant grafik
+
+puis on va dans le répertoire graphic: npm publish et cela le publie sur npm en publique
+
+
+Finallement on utilise la library: npm install --save @coderbase/ui
+
+Dans une application ANgular, on retrouve des directives
+fichier pour manipuler un template html, ca s'appelle une directive
+Directive <ng if> </ng if>
+
+Directive d'attribut. Manipuler les attributs de tous les élements du DOM p.id
+Décorateur @Directive
+
+Directive qui permet de modifier qu'un seul template => WebCOmpnent, il ne peut manipuler qu'un seul template grace au décorateur @COmpanent
+
+interpolation {{}}
+
+Event binding => [property]
+property Binding => (click)
+
+Injector
+Faire par exemple une sorte de fichier de configuration, un fichier service (PAr exmple pour faire des appels d'endpoint)
+@Injectable
+Si j'injecte au niveau Route, tous le monde pourra utiliser la couche service
+
+
+Découpage en module pk? => maintenance, réutilisabilité , performance
+Module avec des webComponent => Exemple, la couche d'authent. AU démarrage, je veux juste charger la couche d'autent. Je mets tout dans un module et le routeur ne charge que le module
+Module avec des Service
+Module avec des Value
+Module avec des FN
+
+Routeur s'occupe de détruire et instancier des composants
+
+shared-module 
+Creation de module => ng g module shared, ng g module login
+
+lazy loading => chargement plus tard
+
+Copié coller du module d'une application à l'autre fonctionne
+
+Dans app.module.ts ont import UiModule et LoginModule 
+
+Creation de composent dans le répertoire components
+ng g component ui/components/ui
+ng g component ui/components/header
+ng g component ui/components/nav
+ng g component ui/components/footer
+
+npm install récupère toutes les dépendances (@coderbase/ui)
+
+pour que l'élement parent accède à l'élement enfant, il faut exporter le composant enfant : exports: [UiComponent],
+
+
+Si on met du css dans le composant (style de composant) d'un style gloabl par exemple h1{}, ca cible uniquement le composant.
+
+Si on a envie de créer un theme generale, c'est la qu'on va utiliser du SCSS (CSS compilé et faire des variables)
+
+taper dans google "include path angular" (Pouvoir faire des imports sass sans se soucier du chemin relatif)
+Inclure cette ligne de code dans angular.json :
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/stylings"
+              ]
+            },
+
+Info en plus: Pour compiler du scss, on peut utiliser gulp
+
+créer un dossier dans src appelé stylings. et créer des fichiers scss (_fonts, _layout, _theme) _ par parser et faire de la lecture seule et faire un import dans un fichier css.
+C'est pas vraiment un import mais il va lire le fichier. Sans le _, ce n'est plus le même procédé d'import, ca sera plus long.
+
+Parathese rem
+rem (2 fois la taille par défault du navigator). On les utilises pour faire du responsive.
+coefficient multiplicateur par à la taille du navigateur par défault.
+Augmenter homotétiquement la taille de ses polices
+Ex:
+p{
+font-size : 1rem;
+}
+h2{
+font-size : 1.5rem;
+}
+h3{
+font-size : 3rem;
+}
+
+@media(768px){
+body{
+font-size : 17 px;
+}
+}
+@media(1200px){
+body{
+font-size : 25 px;
+}
+}
+
+Augmente homotétiquyement en fonction de la taille du body (ou html, l'élément le plus haut)
+fin Parathese rem
+
+Le contenu, on peut l'externaliser dans le fichier typescript.
+Pour l'internalisation:
+On télécharge un package qui s'appuie sur des fichiers json pour l'internalisation.
+Dans l'interpolation ca se traduirait par:
+{{ header.title | translate }} par exemple
+
+
