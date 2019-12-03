@@ -178,3 +178,46 @@ Dans l'interpolation ca se traduirait par:
 {{ header.title | translate }} par exemple
 
 
+Navigation:
+Changer le routeur. 1 route = 1 component page
+Créer un composant par page.
+
+Arborescenes idéale:
+PAges
+  - PAge-Login
+  - Page-Prestations
+  - Page-client
+
+Dans chacun des sous pages j'ajoutes des components.
+Si un de mes composants dynamiques (Ex un tableau), s'alimente de donnée brut (et pas de chiffre), il faut géré la dynamicité.
+Pour cela, il faut faire ce traitement au plus haut niveau => Dans PAges
+
+
+Lyfecycle:
+Appelle du constructeur ts puis termine par la génération du HTML et appelle la méthode ngOnChanges() et ngOnInit()
+ngOnChanges() est appelé quand une propriété Input est changé
+
+@Input = décorateur sur une propriété pour faire du binding sur une propriété du coté parent
+Du parent vers l'enfant par exemple => <app tableau[parram] = "variables">
+C'est du binding, c'est au moment où l'enfant est crée qu'il sait qu'il doit s'appropier des parametre
+Et ngOnChanges() sera appelé
+Il ne le fera que avec les type primitif! 
+Type par référence (Tableau ou objet), ngOnChanges() ne sera pas appelé, car le pointeur ne change pas
+ngDoCheck pourra détéecter ces changements
+
+ngAfterContentChecked est utilisé dans la prjection
+
+Pour détruite un composannt, ca utilise le cycle de vie ici:
+https://angular.io/guide/lifecycle-hooks
+
+Router:
+Un router se met au niveau d'un module.
+Dès qu'une règle macth, on s'arrete
+
+si dans app.modulte.ts on a pas importé le composant, on ne peut pas déclarer de route avec une instance de ce composant
+
+
+LazyLoading (QUe pour des modules, pas pour des webcomponent),
+Import composant au moment de la creéation de la route
+
+<router-outlet></router-outlet> => C'est la qu'on met le composant crée par le routeur.
