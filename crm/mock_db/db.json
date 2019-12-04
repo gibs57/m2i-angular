@@ -1,9 +1,29 @@
-﻿{
+{
   "prestations": [
-    { "id": 1, "typePresta": "formation", "client": "le client", "nbjours": 5 , "tjmHt": 800 , "tauxTva": 20 , "state": "Annulé" },
-    { "id": 2, "typePresta": "formation", "client": "autre client", "nbjours": 10 , "tjmHt": 800 , "tauxTva": 20 , "state": "Option" }
+    {
+      "nbjours": 5,
+      "tjmHt": 800,
+      "tauxTva": 20,
+      "state": "Annulé",
+      "id": 1,
+      "typePresta": "formation",
+      "client": "le client"
+    },
+    {
+      "nbjours": 10,
+      "tjmHt": 800,
+      "tauxTva": 20,
+      "state": "Annulé",
+      "id": 2,
+      "typePresta": "formation",
+      "client": "autre client"
+    }
   ],
   "clients": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
   ]
 }

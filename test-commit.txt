@@ -271,3 +271,41 @@ Pour pouvoir faire ca il faut faire ses propres pipes.
 total --export va l'ajouter automatiquement dans la déclaration et desn les exports.
 Je veux les utiliser dans prestations module, donc obligé des l'exporter
 RAppel: On ne peut pas importer de composant, de Pipe ect.., On ne peut que importer des modules
+
+pipe keyvalue, transfrom enum en tableau key value
+
+
+ [selected]="state.value === item.state" [value]="state.value" => property binding
+
+Puis viens l'event binding
+
+
+
+ng-content => projete le contenu parent vers enfant du composant
+Si plusieurs ng-content, c'est le dernier qui va etre pris en compte
+
+on peut cibler des élement de class
+<p class="test">Un paragraphe</p>
+<p id="test">Un paragraphe</p>
+
+Dans l'élement enfant :
+
+<ng-content select=".test"></ng-content>
+<ng-content select="[id = 'test']"></ng-content>
+
+Binding de classe: directive [ngClass]
+
+Le mieux est de créer une directive.
+Attention si on fait du binding property, il faut faire l'affectation impértaivement dans le ngOnInit
+
+A chaque fois qu'un lifecycle est appelé, une fonction ChangeDetection est appelé sur tous les components.
+Si il y a eu un changement, on réunitialise un lifecyle sur le composant.
+C'est très lourd comme traitement, on souhaiterai faire un ChangeDetection uniquement sur les composants concernés (ET eventuellement les enfants)
+Pour cela on utilise OnPush sur le composant le plus haut de l'application:
+3 conditions:
+ - S'il capte un event
+ - Si la vue est mis à jour à partir d'un Observable
+ - Si un @Input change de valeur
+
+<tr *ngFor="let item of collection$ | async"> | async, fait la subscription et récupère le flux de donnée mais cette fois depuis le HTML.
+Lorsque le composant est détruit, le unsubscription se fait automatiquement, donc plus d'oublie possible :)

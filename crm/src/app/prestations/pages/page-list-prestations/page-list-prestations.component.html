@@ -1,27 +1,15 @@
-<p>page-list-prestations works!</p>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Client</th>
-        <th scope="col">NbJours</th>
-        <th scope="col">TJM HT</th>
-        <th scope="col">Total HT</th>
-        <th scope="col">Total TTC</th>
-        <th scope="col">State</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of collection">
-        <th>{{ item.client }}</th>
-        <td>{{ item.typePresta }}</td>
-        <td>{{ item.nbjours }}</td>
-        <td>{{ item.tjmHt | currency:'EUR' }}</td>
-        <td>{{ item | total | currency:'EUR' }}</td>
-        <td>{{ item | total: item.tauxTva | currency:'EUR' }}</td>
-        <td>{{ item.state }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<app-tableau-light [headers]="headers">
+    <tr *ngFor="let item of collection$ | async">
+      <th>{{ item.client }}</th>
+      <td>{{ item.typePresta }}</td>
+      <td>{{ item.nbjours }}</td>
+      <td>{{ item.tjmHt | currency:'EUR' }}</td>
+      <td>{{ item | total | currency:'EUR' }}</td>
+      <td>{{ item | total: item.tauxTva | currency:'EUR' }}</td>
+      <td [appState]="item.state">
+        <select (change)="changeState(item, $event)">
+          <option *ngFor="let state of states | keyvalue" [selected]="state.value === item.state" [value]="state.value">{{ state.value }}</option>
+        </select>
+      </td>
+    </tr>
+</app-tableau-light>

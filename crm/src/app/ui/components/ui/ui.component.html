@@ -1,4 +1,4 @@
-<coderbase-ui>
+<!-- <coderbase-ui>
   <div header>
     <app-header></app-header>
   </div>
@@ -7,9 +7,18 @@
   </div>
   <div content>
     <router-outlet></router-outlet>
-    <!-- Routed components go here -->
   </div>
   <div footer>
     <app-footer></app-footer>
   </div>
+</coderbase-ui> -->
+
+<!-- Car on utilise le framework coder-base ui, on peut écrire -->
+
+<coderbase-ui>
+  <app-header header></app-header>
+  <app-nav nav></app-nav>
+  <router-outlet content></router-outlet>
+  <!-- Routed components go here -->
+  <app-footer footer></app-footer>
 </coderbase-ui>
