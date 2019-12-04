@@ -13,11 +13,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr *ngFor="let item of collection">
+        <th>{{ item.client }}</th>
+        <td>{{ item.typePresta }}</td>
+        <td>{{ item.nbjours }}</td>
+        <td>{{ item.tjmHt | currency:'EUR' }}</td>
+        <td>{{ item | total | currency:'EUR' }}</td>
+        <td>{{ item | total: item.tauxTva | currency:'EUR' }}</td>
+        <td>{{ item.state }}</td>
       </tr>
     </tbody>
   </table>

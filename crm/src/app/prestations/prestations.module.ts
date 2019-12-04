@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageListPrestationsComponent } from './pages/page-list-prestations/page-list-prestations.component';
 import { PrestationsRoutingModule } from './prestations-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -9,7 +10,8 @@ import { PrestationsRoutingModule } from './prestations-routing.module';
   declarations: [PageListPrestationsComponent],
   imports: [
     CommonModule,
-    PrestationsRoutingModule
+    PrestationsRoutingModule,
+    SharedModule
   ]
 })
 export class PrestationsModule { }

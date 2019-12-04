@@ -1,3 +1,8 @@
+Formateur 
+Christophe Gueroult
+
+christophegueroult@gmail.com
+
 ng --version => install angular
 ng new my app => créer nouvelle application
 code . => L'ouvre directement dans visual code
@@ -228,3 +233,41 @@ https://angular.io/guide/router#preloading-background-loading-of-feature-areas
 
 On peut simuler une api et un serveur grace à JSON Server:
 https://github.com/typicode/json-server#getting-started
+
+MApping de donnée avvec un Observable
+De la meme maniere qu'il existe des filtres avec angular, il existe aussi des filtres avec rxjs
+
+unscribe automatiquement car
+
+Le role d'un pipe (CurrencyPipe) est de prendre une donnée en entrée et resortir la donnée.
+Peut se faire en dans une interpolation
+On peut créer ses propres
+
+
+Pour impporter la langue fr et l'utiliser (Angular ne propose pas fr-FR par défault):
+Aller dan app.module.ts
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+// the second parameter 'fr' is optional
+registerLocaleData(localeFr, 'fr');
+selon la doc https://angular.io/guide/i18n
+
+puis ajouter dans provider
+providers: [{provide: LOCALE_ID, useValue: 'fr-FR' }],
+selon la doc https://angular.io/api/core/LOCALE_ID
+
+Trop d'appel a cause des lifecycle.
+Creation et destruction des vues pour mettre à jour la vue
+sur le ng-for, est appelé le NgDoCheck plusieurs fois car la vue est changé à cause des fonctions totalHT() et totalTTC()
+
+PAS D4APPEL DE METHODE DANS LE HTML
+        <td>{{ item.totalHt() }}</td>
+        <td>{{ item.totalTtc() }}</td>
+INTERDIT!!
+
+Pour pouvoir faire ca il faut faire ses propres pipes.
+
+total --export va l'ajouter automatiquement dans la déclaration et desn les exports.
+Je veux les utiliser dans prestations module, donc obligé des l'exporter
+RAppel: On ne peut pas importer de composant, de Pipe ect.., On ne peut que importer des modules
