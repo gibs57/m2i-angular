@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Prestation } from 'src/app/shared/models/pretstation';
 import { PrestationsService } from '../../services/prestations.service';
 import { State } from 'src/app/shared/enums/state.enum';
@@ -13,7 +13,7 @@ export class PageListPrestationsComponent implements OnInit {
   public collection$: Observable<Prestation[]>;
   public states = State;
   public headers =  ['Type', 'Client', 'NbJours', 'TJM HT', 'Total HT', 'Total TTC', 'State'];
-  constructor(private prestationsService: PrestationsService) {
+  constructor(private prestationsService: PrestationsService, private cdr: ChangeDetectorRef) {
    }
 
   ngOnInit() {
@@ -29,6 +29,7 @@ export class PageListPrestationsComponent implements OnInit {
     this.prestationsService.update(item, event.target.value).subscribe((res: Prestation) => {
       console.log(res);
       item.state = res.state;
+      this.cdr.markForCheck();
     });
   }
 
