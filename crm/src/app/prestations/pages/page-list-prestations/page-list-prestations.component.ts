@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 export class PageListPrestationsComponent implements OnInit {
   public collection$: Observable<Prestation[]>;
   public states = State;
+  public label = 'Ajouter prestataire';
+  public route = 'add';
   public headers =  ['Type', 'Client', 'NbJours', 'TJM HT', 'Total HT', 'Total TTC', 'State'];
   constructor(private prestationsService: PrestationsService, private cdr: ChangeDetectorRef) {
    }

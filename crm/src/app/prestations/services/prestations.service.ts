@@ -39,4 +39,8 @@ export class PrestationsService {
     obj.state = state;
     return this.http.put(`${this.urlApi}prestations/${item.id}`, obj);
   }
+
+  public add(item: any) {
+    return this.http.post(`${this.urlApi}prestations`, item);
+  }
 }

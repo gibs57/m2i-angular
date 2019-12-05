@@ -309,3 +309,30 @@ Pour cela on utilise OnPush sur le composant le plus haut de l'application:
 
 <tr *ngFor="let item of collection$ | async"> | async, fait la subscription et récupère le flux de donnée mais cette fois depuis le HTML.
 Lorsque le composant est détruit, le unsubscription se fait automatiquement, donc plus d'oublie possible :)
+Attaention au bug:
+changeDetection: ChangeDetectionStrategy.OnPush avec this.cdr.markForCheck();
+https://netbasal.com/a-comprehensive-guide-to-angular-onpush-change-detection-strategy-5bac493074a4
+
+
+
+Observable froid vs Observable chaud.
+Froid : 
+On souscrit, on récupère une donnée, si on modifie le flux de donnée, il faut faire un unsubscribe avant la modig, modifier et refaire un subscribe
+Chaud:
+On reste à l'écoute malgré les modifications. PArfait pour les flux facebook qui continue d'etre enrichie. Pas besoin de faire de unsubscribe puis subscribe
+Regarder dans la doc rxjs "Subject"
+Subject => ??
+BehaviorSubject => On ne peut pas déclarer in Behavior sans l'initialiser (Meme à nul). C'est un Observable Chaud
+ReplaySubject => Behavior stoque juste la dernière qu'il lui ai envoyé, le replay stoque tout (PArfait pour une foncion undo)
+AsyncSubject => 
+
+Important pour le formulaire qui sera un composant enfant des pages. Il faudra remonter les infos à la page avant d'appeler la couche service.
+Pour remonter les infos, il faut que le composant return un @Output qui sera de type Event et Observable Chaud.
+EventEmitter permet d'avoir le Type commité cart il extend un SUbject
+
+Remarque : Ce lien permet de créer des micro composants d'un formulaire : https://ultimatecourses.com/blog/angular-dynamic-components-forms
+Il faut faire cette méthode lorsqu'on récupère des données coté serveurs pour construire le formulaire
+
+On ne peut pas stoquer un objet dans un option sauf si on utilise la directive [ngValue]
+importer ReactiveFormsModule pour que ca fonctionne
+

@@ -1,0 +1,14 @@
+@import 'theme';
+
+a {
+  display: inline-block;
+  padding: 1em;
+  color: $light-color;
+  background: lighten($dark-color, 15);
+  margin-left: 10px;
+  text-decoration: none;
+  &:hover {
+    transition: all .5s;
+    background: $dark-color;
+  }
+}

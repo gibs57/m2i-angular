@@ -1,29 +1,63 @@
 {
   "prestations": [
     {
+      "id": 1,
+      "typePresta": "formation",
+      "client": "le client",
       "nbjours": 5,
       "tjmHt": 800,
       "tauxTva": 20,
-      "state": "Confirmé",
-      "id": 1,
-      "typePresta": "formation",
-      "client": "le client"
+      "state": "Annulé"
     },
     {
+      "id": 2,
+      "typePresta": "formation",
+      "client": "autre client",
       "nbjours": 10,
       "tjmHt": 800,
       "tauxTva": 20,
-      "state": "Annulé",
-      "id": 2,
-      "typePresta": "formation",
-      "client": "autre client"
+      "state": "Option"
+    },
+    {
+      "typePresta": "Encore un client",
+      "client": "Formation",
+      "nbjours": 20,
+      "tjmHt": 1200,
+      "tauxTva": 20,
+      "state": "Option",
+      "id": 3
     }
   ],
   "clients": [
     {
+      "state": "Inactif",
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Alexandre",
+      "email": "alexandre@super.com"
+    },
+    {
+      "state": "Inactif",
+      "id": 2,
+      "name": "Majid",
+      "email": "majid@super.com"
+    },
+    {
+      "id": 3,
+      "name": "Pascal",
+      "email": "Pascal@super.com",
+      "state": "Actif"
+    },
+    {
+      "id": 4,
+      "name": "Gilles",
+      "email": "gilles@super.com",
+      "state": "Actif"
+    },
+    {
+      "id": 5,
+      "name": "Cyril",
+      "email": "cyril@super.com",
+      "state": "Actif"
     }
   ]
 }

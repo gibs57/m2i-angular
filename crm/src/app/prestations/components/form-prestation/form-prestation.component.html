@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="typePresta">Type Presta</label>
+    <input formControlName="typePresta" type="text" class="form-control" id="typePresta">
+    <div *ngIf="form.get('typePresta').invalid && form.get('typePresta').touched" class="alert alert-danger">invalid</div>
+  </div>
+
+  <div class="form-group">
+    <label for="client">client</label>
+    <input formControlName="client" type="text" class="form-control" id="client">
+  </div>
+
+  <div class="form-group">
+    <label for="nbjours">nbJours</label>
+    <input formControlName="nbjours" type="number" class="form-control" id="nbJours">
+  </div>
+
+  <div class="form-group">
+    <label for="tjmHt">tjmHt</label>
+    <input formControlName="tjmHt" type="number" class="form-control" id="tjmHt">
+  </div>
+
+  <div class="form-group">
+    <label for="tauxTva">tva</label>
+    <input formControlName="tauxTva" type="number" class="form-control" id="tva">
+  </div>
+
+  <div class="form-group">
+    <label for="state">state</label>
+    <select formControlName="state" class="form-control" id="state">
+      <option *ngFor="let state of states | keyvalue" [ngValue]="state.value">{{ state.value }}</option>
+    </select>
+  </div>
+
+  <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
+
+</form>
