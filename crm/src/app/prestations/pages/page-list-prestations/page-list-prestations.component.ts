@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Prestation } from 'src/app/shared/models/pretstation';
 import { PrestationsService } from '../../services/prestations.service';
 import { State } from 'src/app/shared/enums/state.enum';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-page-list-prestations',
@@ -14,8 +16,9 @@ export class PageListPrestationsComponent implements OnInit {
   public states = State;
   public label = 'Ajouter prestataire';
   public route = 'add';
-  public headers =  ['Type', 'Client', 'NbJours', 'TJM HT', 'Total HT', 'Total TTC', 'State'];
-  constructor(private prestationsService: PrestationsService, private cdr: ChangeDetectorRef) {
+  public headers =  ['Type', 'Client', 'NbJours', 'Taux TVA', 'TJM HT', 'Total HT', 'Total TTC', 'State', 'Action'];
+  public init = new Prestation();
+  constructor(private prestationsService: PrestationsService, private cdr: ChangeDetectorRef, private router: Router) {
    }
 
   ngOnInit() {
@@ -34,5 +37,36 @@ export class PageListPrestationsComponent implements OnInit {
       this.cdr.markForCheck();
     });
   }
+
+  addItem() {
+    console.log(this.init);
+    this.prestationsService.add({...this.init}).subscribe((res) => {
+      console.log(res);
+      this.prestationsService.initCollection();
+      this.collection$ = this.prestationsService.collection;
+      this.cdr.markForCheck();
+      this.init = new Prestation();
+    });
+  }
+  changeItem() {
+    console.log(this.init);
+  }
+
+  delete(item) {
+    console.log(item);
+    this.prestationsService.delete(item).subscribe((res) => {
+      // traiter la response de l'api
+      this.prestationsService.initCollection();
+      this.collection$ = this.prestationsService.collection;
+      this.cdr.markForCheck();
+    });
+
+  }
+  edite(item) {
+    console.log(item);
+    this.router.navigate(['prestations/edit', item.id]);
+
+  }
+
 
 }

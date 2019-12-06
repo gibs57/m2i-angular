@@ -3,6 +3,7 @@
       <th>{{ item.client }}</th>
       <td>{{ item.typePresta }}</td>
       <td>{{ item.nbjours }}</td>
+      <td>{{ item.tauxTva }}</td>
       <td>{{ item.tjmHt | currency:'EUR' }}</td>
       <td>{{ item | total | currency:'EUR' }}</td>
       <td>{{ item | total: item.tauxTva | currency:'EUR' }}</td>
@@ -10,6 +11,26 @@
         <select (change)="changeState(item, $event)">
           <option *ngFor="let state of states | keyvalue" [selected]="state.value === item.state" [value]="state.value">{{ state.value }}</option>
         </select>
+      </td>
+      <td>
+        <app-action-bar (del)="delete(item)" (editer)="edite(item)"></app-action-bar>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="text" [(ngModel)]="init.typePresta"></td>
+      <td><input type="text" [(ngModel)]="init.client"></td>
+      <td><input type="number" [(ngModel)]="init.nbjours"></td>
+      <td><input type="number" [(ngModel)]="init.tauxTva"></td>
+      <td><input type="number" [(ngModel)]="init.tauxTva"></td>
+      <td></td>
+      <td></td>
+      <td>
+        <select [(ngModel)]="init.state" (change)="changeItem()">
+          <option *ngFor="let state of states | keyvalue" [value]="state.value">{{ state.value }}</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="addItem()">add</button>
       </td>
     </tr>
 </app-tableau-light>

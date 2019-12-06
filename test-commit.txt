@@ -321,8 +321,8 @@ On souscrit, on récupère une donnée, si on modifie le flux de donnée, il faut fa
 Chaud:
 On reste à l'écoute malgré les modifications. PArfait pour les flux facebook qui continue d'etre enrichie. Pas besoin de faire de unsubscribe puis subscribe
 Regarder dans la doc rxjs "Subject"
-Subject => ??
-BehaviorSubject => On ne peut pas déclarer in Behavior sans l'initialiser (Meme à nul). C'est un Observable Chaud
+Subject => Ne stoque jamais rien contrairement au BehaviorSubject. On ne peut pas initialiser un Subject. Si on vet initialiser un Subject, on doit utiliser un BehaviorSubject
+BehaviorSubject => On ne peut pas déclarer in Behavior sans l'initialiser (Meme à nul). C'est un Observable Chaud. version$.value retourne la dernière valeur sans faire un subscribe.
 ReplaySubject => Behavior stoque juste la dernière qu'il lui ai envoyé, le replay stoque tout (PArfait pour une foncion undo)
 AsyncSubject => 
 

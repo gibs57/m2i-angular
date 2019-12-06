@@ -6,15 +6,20 @@ import { TableauDarkComponent } from './components/tableau-dark/tableau-dark.com
 import { StateDirective } from './directives/state.directive';
 import { ButtonComponent } from './components/button/button.component';
 import { RouterModule } from '@angular/router';
+import { ActionBarComponent } from './components/action-bar/action-bar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
-  declarations: [TotalPipe, TableauLightComponent, TableauDarkComponent, StateDirective, ButtonComponent],
+  declarations: [TotalPipe, TableauLightComponent, TableauDarkComponent, StateDirective, ButtonComponent, ActionBarComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgbPopoverModule,
+    FontAwesomeModule
   ],
-  exports: [TotalPipe, TableauLightComponent, TableauDarkComponent, ButtonComponent, StateDirective]
+  exports: [TotalPipe, TableauLightComponent, TableauDarkComponent, ButtonComponent, StateDirective, ActionBarComponent]
 })
 export class SharedModule { }

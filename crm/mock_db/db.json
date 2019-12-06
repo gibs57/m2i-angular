@@ -19,13 +19,13 @@
       "state": "Option"
     },
     {
-      "typePresta": "Encore un client",
+      "typePresta": "Et un de plus 2",
       "client": "Formation",
-      "nbjours": 20,
+      "nbjours": 10,
       "tjmHt": 1200,
-      "tauxTva": 20,
+      "tauxTva": 8800,
       "state": "Option",
-      "id": 3
+      "id": 4
     }
   ],
   "clients": [
